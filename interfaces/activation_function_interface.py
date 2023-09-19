@@ -7,7 +7,7 @@ from typing import List
 
 class ActivationFunctionInterface(ABC):
     @abstractmethod
-    def calculate(input: float) -> float:
+    def calculate(self, input: float) -> float:
         """
         Calculates the value of the neuron output after
         passing by the activation function.
@@ -25,7 +25,7 @@ class ActivationFunctionInterface(ABC):
         """
 
     @abstractmethod
-    def backpropagate() -> float:
+    def backpropagate(self) -> float:
         """
         Automaticly calculate the backpropagation value for neuron
         with the stored gradient values.
@@ -33,7 +33,7 @@ class ActivationFunctionInterface(ABC):
         """
 
     @abstractmethod
-    def auto_grad(activate: bool = True) -> None:
+    def auto_grad(self, activate: bool = True) -> None:
         """
         Activate or deactivate the gradient auto storage (used for
         a faster backpropagation).
