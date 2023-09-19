@@ -1,23 +1,28 @@
-""" ReLu activation function module
+""" Hyperbolic tangent activation function module
 """
 
 from interfaces.activation_function_interface import ActivationFunctionInterface
+from math import tanh
 
 
-class ReLu(ActivationFunctionInterface):
+class Tanh(ActivationFunctionInterface):
+    __auto_grad = False
+    __last_in = None
+    __last_out = None
+
     def __init__(self) -> None:
         """
-        ReLu activation function.
+        Hyperbolic tangent activation function.
         """
         super().__init__()
-
+    
     def calculate(self, input: float) -> float:
-        res = input if input > 0 else 0
+        res = tanh(input)
         if self.__auto_grad:
             self.__last_in = input
             self.__last_out = res
         return res
 
     def derivate(input: float) -> float:
-        res = 1 if input > 0 else 0
+        res = 1 + tanh(input)**2
         return res
