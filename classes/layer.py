@@ -1,12 +1,9 @@
 """ Neural network layer module
 """
 
-from copy import deepcopy
 from typing import Tuple
-from features_collections.weights_initialize import InitWeights
-from interfaces.activation_function_interface import ActivationFunctionInterface
-from interfaces.layer_interface import LayerInterface
-from classes.neuron import Neuron
+from interfaces.layer_interface import LayerInterface, ActivationFunctionInterface
+from classes.neuron import Neuron, InitWeights, deepcopy
 
 
 class Layer(LayerInterface):
