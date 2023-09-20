@@ -15,7 +15,8 @@ class Layer(LayerInterface):
         self.__neurons = [Neuron(inputs_number=inputs_number,
                                  initial_format=initiation_weights)
                                  for i in outputs_number]
-        activation_function = activation_function if isinstance(activation_function, ActivationFunctionInterface) \
+        activation_function = activation_function if isinstance(activation_function, 
+                                                                ActivationFunctionInterface) \
                               else activation_function()
         self.__activations = [deepcopy(activation_function) for i in outputs_number]
 
@@ -26,7 +27,8 @@ class Layer(LayerInterface):
 
     def backpropagate(self, expected_out: Tuple) -> None:
         for index, neuron in enumerate(self.__neurons):
-            actualizations = [self.__activations.backpropagate(input_, expected_out[index]) for input_ in self.__last_inputs]
+            actualizations = [self.__activations.backpropagate(input_, expected_out[index]) \
+                              for input_ in self.__last_inputs]
             neuron.actualize_weights(actualizations)
             bias_actualization = self.__activations.backpropagate(1, expected_out[index])
             neuron.actualize_bias(bias_actualization)
