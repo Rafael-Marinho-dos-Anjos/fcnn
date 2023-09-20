@@ -1,4 +1,4 @@
-""" Neural network layer interface
+""" Neural network layer interface module
 """
 
 from abc import ABC, abstractmethod
@@ -38,11 +38,12 @@ class LayerInterface(ABC):
         """
 
     @abstractmethod
-    def backpropagate(self) -> None:
+    def backpropagate(self, expected_out: Tuple) -> None:
         """
         Aplies the backpropagation to actualize the weights on layer neurons.
+        :param tuple expected_out: the expected output of layer
         """
-    
+
     @abstractmethod
     def autograd(self, activate: bool = True) -> None:
         """
